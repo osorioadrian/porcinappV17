@@ -16,5 +16,26 @@ export const pageRoutes: Routes = [
     canActivate: [userAdminGuard],
     title: 'Porcinapp - Usuarios',
     data: { titulo: 'Usuarios' }
+  },
+  {
+    path: 'metrics',
+    loadComponent: () => import('./metrics/metrics.component'),
+    canActivate: [userAdminGuard],
+    title: 'Porcinapp - Metricas',
+    data: { titulo: 'Metricas' }
+  },
+  {
+    path: 'races',
+    loadComponent: () => import('./races/races.component'),
+    canActivate: [userAdminGuard],
+    title: 'Porcinapp - Razas',
+    data: { titulo: 'Razas' }
+  },
+  {
+    path: 'species',
+    loadComponent: () => import('./species/species.component'),
+    canActivate: [userAdminGuard],
+    title: 'Porcinapp - Especies',
+    data: { titulo: 'Especies' }
   }
 ];

@@ -1,0 +1,27 @@
+<div id="modal-content-wrapper">
+  <img
+    id="warning-logo"
+    mat-card-image
+    src="../../assets/img/warning.png"
+    alt="logo HappyPets"
+  />
+
+  <header id="modal-header">
+    <h1 id="modal-title">{{ data.title }}</h1>
+  </header>
+  <section id="modal-body">
+    <p>{{ data.description }}</p>
+  </section>
+  <footer id="modal-footer">
+    <button
+      mat-raised-button
+      id="modal-action-button"
+      [mat-dialog-close]="true"
+    >
+      {{ data.actionButtonText }}
+    </button>
+    <button mat-raised-button id="modal-cancel-button" (click)="closeModal()">
+      Cancelar
+    </button>
+  </footer>
+</div>

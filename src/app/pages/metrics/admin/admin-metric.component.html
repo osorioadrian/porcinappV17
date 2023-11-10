@@ -1,0 +1,88 @@
+<h1 mat-dialog-title class="dialog-title">{{ title }} Métrica</h1>
+<div mat-dialog-content>
+  <form [formGroup]="form" (ngSubmit)="save()">
+    <mat-form-field appearance="outline">
+      <mat-label>Nombre Métrica</mat-label>
+      <input
+        formControlName="name"
+        #message
+        maxlength="25"
+        matInput
+        placeholder="Ingrese Nombre De Métrica"
+      />
+      <mat-error
+        *ngIf="
+          form.get('name')?.hasError('required') && form.get('name')?.touched
+        "
+      >
+        Por favor ingrese un nombre de métrica
+      </mat-error>
+      <mat-error
+        *ngIf="
+          form.get('name')?.hasError('minlength') && form.get('name')?.touched
+        "
+      >
+        Mínimo 3 caracteres
+      </mat-error>
+      <mat-error
+        *ngIf="
+          form.get('name')?.hasError('maxlength') && form.get('name')?.touched
+        "
+      >
+        Máximo 25 caracteres
+      </mat-error>
+      <mat-hint align="end">{{ message.value.length }} / 25</mat-hint>
+    </mat-form-field>
+
+    <br />
+
+    <mat-form-field appearance="outline">
+      <mat-label>Símbolo</mat-label>
+      <input
+        formControlName="symbol"
+        #symbol
+        maxlength="5"
+        matInput
+        placeholder="Ingrese Símbolo De Métrica"
+      />
+      <mat-error
+        *ngIf="
+          form.get('symbol')?.hasError('required') &&
+          form.get('symbol')?.touched
+        "
+      >
+        Por favor ingrese un nombre de métrica
+      </mat-error>
+      <mat-error
+        *ngIf="
+          form.get('symbol')?.hasError('minlength') &&
+          form.get('symbol')?.touched
+        "
+      >
+        Mínimo 1 caracteres
+      </mat-error>
+      <mat-error
+        *ngIf="
+          form.get('symbol')?.hasError('maxlength') &&
+          form.get('symbol')?.touched
+        "
+      >
+        Máximo 5 caracteres
+      </mat-error>
+      <mat-hint align="end">{{ symbol.value.length }} / 5</mat-hint>
+    </mat-form-field>
+
+    <div>
+      <button
+        class="btn-modal"
+        [disabled]="form.invalid"
+        type="submit"
+        mat-dialog-close
+        mat-raised-button
+        color="primary"
+      >
+        <mat-icon>save</mat-icon> {{ titleButton }}
+      </button>
+    </div>
+  </form>
+</div>

@@ -98,7 +98,7 @@ export class AuthService {
       .pipe(
         map((resp: any) => {
           const { fullName, email, roles, img = '', id } = resp.user;
-
+          this.user = new Auth(fullName, email, roles, img, id);
           this.token = resp.token;
           localStorage.setItem('token', this.token);
           return true;

@@ -1,0 +1,38 @@
+#modal-content-wrapper {
+  width: 100%;
+  height: 100%;
+  display: grid;
+}
+
+#warning-logo {
+  display: block;
+  margin: auto;
+  width: 20%;
+}
+
+#modal-title {
+  margin-bottom: -40px;
+  text-align: center;
+  font-size: 22px;
+}
+
+#modal-body {
+  margin-bottom: -40px;
+  text-align: center;
+}
+
+#modal-footer {
+  text-align: center;
+  align-self: center;
+}
+
+#modal-action-button {
+  margin-right: 10px;
+  background-color:#00897b;
+  color: white;
+}
+
+#modal-cancel-button {
+  background-color: #ff3d00;
+  color: white;
+}

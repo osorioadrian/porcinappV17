@@ -1,1 +1,91 @@
-<p>pages works!</p>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false"
+  >
+    <mat-sidenav-container>
+      <mat-nav-list>
+        <!-- menu estating -->
+        <mat-accordion>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header *ngFor="let home of sidebar.home">
+              <mat-panel-title>
+                {{ home.titulo }}
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-list *ngFor="let home of sidebar.home">
+              <mat-list-item
+                *ngFor="let submenu of home.submenu"
+                mat-list-item
+                [routerLink]="[submenu.url]"
+                routerLinkActive="active"
+              >
+                <mat-icon matListItemIcon>{{ submenu.icon }}</mat-icon>
+                <div matListItemTitle>{{ submenu.titulo }}</div>
+              </mat-list-item>
+            </mat-list>
+          </mat-expansion-panel>
+        </mat-accordion>
+
+        <!-- menu backend -->
+        <mat-accordion>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header *ngFor="let menu of sidebar.menu">
+              <mat-panel-title>
+                {{ menu.titulo }}
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-list *ngFor="let menu of sidebar.menu">
+              <mat-list-item
+                *ngFor="let submenu of menu.submenu"
+                mat-list-item
+                [routerLink]="[submenu.url]"
+                routerLinkActive="active"
+              >
+                <mat-icon matListItemIcon>{{ submenu.icon }}</mat-icon>
+                <div matListItemTitle class="submenu">{{ submenu.titulo }}</div>
+              </mat-list-item>
+            </mat-list>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </mat-nav-list>
+    </mat-sidenav-container>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+      >
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span class="example-spacer"></span>
+
+      <!-- Avatar -->
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>account_circle</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <a routerLink="/profile" mat-menu-item>
+          <mat-icon>account_circle</mat-icon>
+          <span>Perfil</span>
+        </a>
+        <a (click)="authService.logout()" mat-menu-item>
+          <mat-icon>exit_to_app</mat-icon>
+          <span>Cerrar Sesión</span>
+        </a>
+      </mat-menu>
+    </mat-toolbar>
+    <div class="content">
+      <app-breadcrumbs></app-breadcrumbs>
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

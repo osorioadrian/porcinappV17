@@ -1,1 +1,89 @@
-<p>users works!</p>
+<mat-form-field class="searchTable">
+  <mat-label>
+    <mat-icon style="width: 25px;">search</mat-icon>Buscar Usuario</mat-label
+  >
+  <input matInput #input (keyup)="searchUser($event)" #target />
+</mat-form-field>
+
+<button (click)="modalUser('')" style="float: right;" mat-fab color="warn">
+  <mat-icon>add</mat-icon>
+</button>
+<br /><br />
+
+<div class="mat-elevation-z8">
+  <table
+    mat-table
+    #table
+    [dataSource]="dataSource"
+    [trackBy]="trackTask"
+    matSort
+  >
+    <ng-container class="w100" matColumnDef="imagen">
+      <th mat-header-cell *matHeaderCellDef width="11%">Imagen</th>
+      <td style="width: 70px;" mat-cell *matCellDef="let users">
+        <img [src]="users.img | imagen" class="avatar" />
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef width="22%">Nombre</th>
+      <td mat-cell *matCellDef="let users">{{ users.fullName }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="contacto">
+      <th class="descipcion" mat-header-cell *matHeaderCellDef width="26%">
+        Contacto
+      </th>
+      <td
+        class="descipcion"
+        mat-cell
+        *matCellDef="let users"
+        style="padding-top: 5px;"
+      >
+        <mat-icon style="font-size: 15px; vertical-align: text-top;"
+          >phone</mat-icon
+        >{{ users.phone }}<br />
+        <mat-icon style="font-size: 15px; vertical-align: text-top;"
+          >email</mat-icon
+        >{{ users.email }}<br />
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="role">
+      <th mat-header-cell *matHeaderCellDef width="15%">Rol</th>
+      <td mat-cell *matCellDef="let users">{{ users.roles }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef width="8%" mat-sort-header>
+        Estado
+      </th>
+      <td mat-cell *matCellDef="let users">
+        <mat-slide-toggle
+          color="primary"
+          [checked]="users.isActive"
+          (change)="updateStatus(users, !users.isActive)"
+        >
+        </mat-slide-toggle>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef width="5%">Editar</th>
+      <td mat-cell *matCellDef="let users">
+        <mat-icon color="accent" (click)="modalUser(users._id)">edit</mat-icon>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let users; columns: displayedColumns"></tr>
+  </table>
+
+  <mat-paginator
+    [length]="users.length"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="pageSizeOptions"
+    aria-label="Select page"
+  >
+  </mat-paginator>
+</div>
