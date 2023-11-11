@@ -1,4 +1,4 @@
-<h1 mat-dialog-title style="font-size: 1.3rem;">{{ title }}</h1>
+<h1 mat-dialog-title class="dialog-title">{{ title }}</h1>
 <div mat-dialog-content>
   <form [formGroup]="form" (ngSubmit)="save()">
     <mat-form-field>
@@ -10,40 +10,27 @@
         matInput
         placeholder="Ingrese Nombre De Raza"
       />
-      <mat-error
-        *ngIf="
-          form.get('name')?.hasError('required') && form.get('name')?.touched
-        "
-      >
-        Por favor ingrese un nombre de raza
-      </mat-error>
-      <mat-error
-        *ngIf="
-          form.get('name')?.hasError('minlength') && form.get('name')?.touched
-        "
-      >
-        Mínimo 3 caracteres
-      </mat-error>
-      <mat-error
-        *ngIf="
-          form.get('name')?.hasError('maxlength') && form.get('name')?.touched
-        "
-      >
-        Máximo 25 caracteres
-      </mat-error>
+      @if (form.get('name')?.hasError('required') && form.get('name')?.touched)
+      {
+      <mat-error>Por favor ingrese un nombre de raza</mat-error>
+      } @else if (form.get('name')?.hasError('minlength') &&
+      form.get('name')?.touched) {
+      <mat-error>Mínimo 3 caracteres</mat-error>
+      }
       <mat-hint align="end">{{ message.value.length }} / 25</mat-hint>
     </mat-form-field>
     <br />
+
     <mat-form-field>
-      <mat-label>Especie</mat-label>
-      <mat-select formControlName="specie">
-        <mat-option *ngFor="let specie of species" [value]="specie._id">{{
-          specie.name
-        }}</mat-option>
+      <!-- <mat-label>Especies</mat-label> -->
+      <mat-select formControlName="specie" placeholder="Especies">
+        @for (specie of species; track specie._id) {
+        <mat-option [value]="specie._id">{{ specie.name }}</mat-option>
+        }
       </mat-select>
-      <mat-error *ngIf="form.get('specie')?.hasError('required')">
-        Por favor seleccione una especie
-      </mat-error>
+      @if (form.get('specie')?.hasError('required')) {
+      <mat-error>Por favor seleccione una especie</mat-error>
+      }
     </mat-form-field>
 
     <div>

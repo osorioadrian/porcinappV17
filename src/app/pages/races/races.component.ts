@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TableComponent } from 'app/shared/table/table.component';
 import { Race } from './interface/race';
@@ -15,6 +15,7 @@ import { AdminRacesComponent } from './admin/admin-races.component';
   selector: 'app-races',
   standalone: true,
   imports: [TableComponent],
+  providers: [RacesService],
   template: `
     <app-table
       (edit)="actionModal($event)"
@@ -27,12 +28,12 @@ import { AdminRacesComponent } from './admin/admin-races.component';
   `,
   styles: ``
 })
-export default class RacesComponent {
+export default class RacesComponent implements OnInit {
   races: Race[] = [];
   tableColumn: TableColumn[] = [];
   dataSource = new MatTableDataSource<Race>();
-  private readonly raceService = inject(RacesService);
-  private readonly dialog = inject(MatDialog);
+  raceService = inject(RacesService);
+  dialog = inject(MatDialog);
 
   ngOnInit(): void {
     this.getRaces();
@@ -63,6 +64,8 @@ export default class RacesComponent {
       width: '400px',
       data: id
     });
+
+    dialogRef.afterClosed().subscribe(() => this.getRaces());
 
     dialogRef
       .afterClosed()

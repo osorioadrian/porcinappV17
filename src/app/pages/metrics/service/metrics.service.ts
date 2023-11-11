@@ -7,9 +7,7 @@ import { Observable, map } from 'rxjs';
 
 const base_url = environment.base_url;
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class MetricsService {
   metrics: Metric[] = [];
   http = inject(HttpClient);

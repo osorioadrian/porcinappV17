@@ -7,9 +7,7 @@ import { Observable, catchError, map, throwError } from 'rxjs';
 
 const base_url = environment.base_url;
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class RacesService {
   http = inject(HttpClient);
   snackBar = inject(MatSnackBar);

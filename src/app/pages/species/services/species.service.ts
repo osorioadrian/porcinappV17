@@ -7,9 +7,7 @@ import { environment } from 'environments/environment.development';
 
 const base_url = environment.base_url;
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class SpeciesService {
   http = inject(HttpClient);
   snackBar = inject(MatSnackBar);

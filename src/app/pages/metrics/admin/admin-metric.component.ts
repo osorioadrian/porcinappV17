@@ -9,11 +9,7 @@ import {
 } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import {
-  MatDialogModule,
-  MatDialogRef,
-  MAT_DIALOG_DATA
-} from '@angular/material/dialog';
+import { MatDialogModule, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -34,13 +30,13 @@ import { MetricsService } from '../service/metrics.service';
     ReactiveFormsModule,
     MatButtonModule
   ],
+  providers: [MetricsService],
   templateUrl: './admin-metric.component.html',
   styles: ``
 })
 export class AdminMetricComponent {
   form!: UntypedFormGroup;
   matcher = new MyErrorStateMatcher();
-  metricId: string;
   metric: Metric = {
     _id: '',
     name: '',
@@ -54,14 +50,12 @@ export class AdminMetricComponent {
   private formBuilder = inject(UntypedFormBuilder);
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: string) {
-    this.metricId = data;
-
-    if (this.metricId) {
-      this.title = 'Actualizar ';
+    if (data) {
+      this.title = 'Actualizar Métrica';
       this.titleButton = 'Actualizar';
-      this.getMetricId(this.metricId);
+      this.getMetricId(data);
     } else {
-      this.title = 'Crear ';
+      this.title = 'Crear Métrica';
       this.titleButton = 'Guardar';
     }
   }
@@ -97,9 +91,8 @@ export class AdminMetricComponent {
   save(): void {
     const dataForm = JSON.parse(JSON.stringify(this.form.value));
 
-    if (this.metricId) {
-      console.log('metricId', this.metricId);
-      this.update(dataForm, this.metricId);
+    if (this.data) {
+      this.update(dataForm, this.data);
     } else {
       this.add(dataForm);
     }

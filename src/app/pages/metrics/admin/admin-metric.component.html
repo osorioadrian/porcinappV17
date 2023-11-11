@@ -1,4 +1,4 @@
-<h1 mat-dialog-title class="dialog-title">{{ title }} Métrica</h1>
+<h1 mat-dialog-title class="dialog-title">{{ title }}</h1>
 <div mat-dialog-content>
   <form [formGroup]="form" (ngSubmit)="save()">
     <mat-form-field appearance="outline">
@@ -10,27 +10,13 @@
         matInput
         placeholder="Ingrese Nombre De Métrica"
       />
-      <mat-error
-        *ngIf="
-          form.get('name')?.hasError('required') && form.get('name')?.touched
-        "
-      >
-        Por favor ingrese un nombre de métrica
-      </mat-error>
-      <mat-error
-        *ngIf="
-          form.get('name')?.hasError('minlength') && form.get('name')?.touched
-        "
-      >
-        Mínimo 3 caracteres
-      </mat-error>
-      <mat-error
-        *ngIf="
-          form.get('name')?.hasError('maxlength') && form.get('name')?.touched
-        "
-      >
-        Máximo 25 caracteres
-      </mat-error>
+      @if (form.get('name')?.hasError('required') && form.get('name')?.touched)
+      {
+      <mat-error>Por favor ingrese un nombre de métrica</mat-error>
+      } @else if (form.get('name')?.hasError('minlength') &&
+      form.get('name')?.touched) {
+      <mat-error>Mínimo 3 caracteres</mat-error>
+      }
       <mat-hint align="end">{{ message.value.length }} / 25</mat-hint>
     </mat-form-field>
 
@@ -45,30 +31,12 @@
         matInput
         placeholder="Ingrese Símbolo De Métrica"
       />
-      <mat-error
-        *ngIf="
-          form.get('symbol')?.hasError('required') &&
-          form.get('symbol')?.touched
-        "
-      >
-        Por favor ingrese un nombre de métrica
+      @if (form.get('symbol')?.hasError('required') &&
+      form.get('symbol')?.touched) {
+      <mat-error>
+        Por favor ingrese el símbolo de la métrica
       </mat-error>
-      <mat-error
-        *ngIf="
-          form.get('symbol')?.hasError('minlength') &&
-          form.get('symbol')?.touched
-        "
-      >
-        Mínimo 1 caracteres
-      </mat-error>
-      <mat-error
-        *ngIf="
-          form.get('symbol')?.hasError('maxlength') &&
-          form.get('symbol')?.touched
-        "
-      >
-        Máximo 5 caracteres
-      </mat-error>
+      }
       <mat-hint align="end">{{ symbol.value.length }} / 5</mat-hint>
     </mat-form-field>
 

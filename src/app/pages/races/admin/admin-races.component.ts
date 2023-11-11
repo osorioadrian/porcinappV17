@@ -1,4 +1,4 @@
-import { Component, Inject, inject } from '@angular/core';
+import { Component, Inject, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   FormControl,
@@ -38,10 +38,9 @@ import { Specie } from 'app/pages/species/interface/specie';
   templateUrl: './admin-races.component.html',
   styles: ``
 })
-export class AdminRacesComponent {
+export class AdminRacesComponent implements OnInit {
   form!: UntypedFormGroup;
   matcher = new MyErrorStateMatcher();
-  raceId: string;
   race: Race = {
     name: ''
   };
@@ -54,12 +53,12 @@ export class AdminRacesComponent {
   private formBuilder = inject(UntypedFormBuilder);
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: string) {
-    this.raceId = data;
+    console.log('dataId', data);
 
-    if (this.raceId) {
+    if (data) {
       this.title = 'Actualizar Raza';
       this.titleButton = 'Actualizar';
-      this.getRaceId(this.raceId);
+      this.getRaceId(data);
     } else {
       this.title = 'Crear Raza';
       this.titleButton = 'Guardar';
@@ -85,8 +84,8 @@ export class AdminRacesComponent {
     });
   }
 
-  getRaceId(raceId: string): void {
-    this.raceService.getRaceById(raceId).subscribe((result: any) => {
+  getRaceId(data: string): void {
+    this.raceService.getRaceById(data).subscribe((result: Race) => {
       if (result._id) {
         this.race = result;
         this.form.patchValue(this.race);
@@ -97,8 +96,8 @@ export class AdminRacesComponent {
   save(): void {
     const dataForm = JSON.parse(JSON.stringify(this.form.value));
 
-    if (this.raceId) {
-      this.update(dataForm, this.raceId);
+    if (this.data) {
+      this.update(dataForm, this.data);
     } else {
       this.add(dataForm);
     }
