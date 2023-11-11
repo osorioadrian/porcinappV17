@@ -1,5 +1,4 @@
 import { Component, ViewChild, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -7,13 +6,13 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { Subscription } from 'rxjs';
-import { User } from './interface/user';
-import { UsersService } from './service/users.service';
+import { User } from '@pages/users/interface/user';
+import { UsersService } from '@pages/users/service/users.service';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { ImagenPipe } from 'app/common/pipes/imagen.pipe';
+import { ImagenPipe } from '@common/pipes/imagen.pipe';
 
 @Component({
   selector: 'app-users',

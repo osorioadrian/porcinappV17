@@ -1,15 +1,13 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { TableComponent } from 'app/shared/table/table.component';
-import { Race } from './interface/race';
+import { TableComponent } from '@shared/table/table.component';
+import { Race } from '@pages/races/interface/race';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { TableColumn } from 'app/shared/table/interface/table';
-import { TableConfig } from 'app/shared/table/interface/table-config';
-import { RacesService } from './service/races.service';
+import { TableColumn } from '@shared/table/interface/table';
+import { RacesService } from '@pages/races/service/races.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { switchMap } from 'rxjs';
-import { DeleteModalComponent } from 'app/shared/delete-modal/delete-modal.component';
-import { AdminRacesComponent } from './admin/admin-races.component';
+import { DeleteModalComponent } from '@shared/delete-modal/delete-modal.component';
+import { AdminRacesComponent } from '@pages/races/admin/admin-races.component';
 
 @Component({
   selector: 'app-races',

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { Auth } from '../interface/auth';
+import { Auth } from '@auth/interface/auth';
 import { environment } from 'environments/environment.development';
 import { Observable, catchError, map, throwError } from 'rxjs';
 import { Router } from '@angular/router';

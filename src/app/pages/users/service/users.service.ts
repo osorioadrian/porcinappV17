@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { User } from '../interface/user';
+import { User } from '@pages/users/interface/user';
 import { HttpClient } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable, catchError, map, throwError } from 'rxjs';
