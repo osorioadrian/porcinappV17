@@ -5,13 +5,13 @@ import {
   MatDialogModule
 } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
-import { TableColumn } from '@shared/table/interface/table';
-import { AdminMetricComponent } from '@pages/metrics/admin/admin-metric.component';
-import { Metric } from '@pages/metrics/interface/metric';
-import { MetricsService } from '@pages/metrics/service/metrics.service';
-import { TableComponent } from '@shared/table/table.component';
+import { TableColumn } from 'app/shared/table/interface/table';
+import { AdminMetricComponent } from './admin/admin-metric.component';
+import { Metric } from './interface/metric';
+import { MetricsService } from './service/metrics.service';
+import { TableComponent } from 'app/shared/table/table.component';
 import { switchMap } from 'rxjs';
-import { DeleteModalComponent } from '@shared/delete-modal/delete-modal.component';
+import { DeleteModalComponent } from 'app/shared/delete-modal/delete-modal.component';
 
 @Component({
   selector: 'app-metrics',

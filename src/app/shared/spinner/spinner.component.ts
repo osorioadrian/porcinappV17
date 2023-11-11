@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SpinnerService } from '@common/services/spinner.service';
+import { SpinnerService } from 'app/common/services/spinner.service';
 import { ThemePalette } from '@angular/material/core';
 import {
   ProgressSpinnerMode,

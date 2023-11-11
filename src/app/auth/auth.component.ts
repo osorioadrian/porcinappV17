@@ -1,6 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MyErrorStateMatcher } from '@common/helpers/errorStateMatcher';
+import { MyErrorStateMatcher } from 'app/common/helpers/errorStateMatcher';
 import {
   ReactiveFormsModule,
   UntypedFormBuilder,
@@ -9,7 +9,7 @@ import {
   Validators
 } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
-import { AuthService } from '@auth/service/auth.service';
+import { AuthService } from './service/auth.service';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';

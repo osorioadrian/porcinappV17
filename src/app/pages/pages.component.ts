@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SidebarService } from '@common/services/sidebar.service';
-import { AuthService } from '@auth/service/auth.service';
+import { SidebarService } from 'app/common/services/sidebar.service';
+import { AuthService } from 'app/auth/service/auth.service';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable, map, shareReplay } from 'rxjs';
 import { MatMenuModule } from '@angular/material/menu';
@@ -11,7 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { BreadcrumbsComponent } from '@shared/breadcrumbs/breadcrumbs.component';
+import { BreadcrumbsComponent } from 'app/shared/breadcrumbs/breadcrumbs.component';
 import { RouterModule } from '@angular/router';
 
 @Component({

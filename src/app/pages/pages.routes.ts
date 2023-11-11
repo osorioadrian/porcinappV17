@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
-import { userAdminGuard } from '@common/guards/user-admin.guard';
-import { verifyTokenGuard } from '@common/guards/verify-token.guard';
+import { userAdminGuard } from 'app/common/guards/user-admin.guard';
+import { verifyTokenGuard } from 'app/common/guards/verify-token.guard';
 
 export const pageRoutes: Routes = [
   {
