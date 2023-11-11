@@ -14,11 +14,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { RacesService } from '../service/races.service';
-import { SpeciesService } from 'app/pages/species/services/species.service';
-import { Race } from '../interface/race';
-import { MyErrorStateMatcher } from 'app/common/helpers/errorStateMatcher';
-import { Specie } from 'app/pages/species/interface/specie';
+import { RacesService } from '@pages/races/service/races.service';
+import { SpeciesService } from '@pages/species/services/species.service';
+import { Race } from '@pages/races/interface/race';
+import { MyErrorStateMatcher } from '@common/helpers/errorStateMatcher';
+import { Specie } from '@pages/species/interface/specie';
 
 @Component({
   selector: 'app-admin-races',

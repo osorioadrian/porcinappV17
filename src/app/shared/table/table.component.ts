@@ -11,16 +11,16 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { TableConfig } from './interface/table-config';
-import { TableColumn } from './interface/table';
+import { TableConfig } from '@shared/table/interface/table-config';
+import { TableColumn } from '@shared/table/interface/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { ColumnValuePipe } from 'app/common/pipes/column-value.pipe';
-import { AuthService } from 'app/auth/service/auth.service';
+import { ColumnValuePipe } from '@common/pipes/column-value.pipe';
+import { AuthService } from '@auth/service/auth.service';
 
 @Component({
   selector: 'app-table',

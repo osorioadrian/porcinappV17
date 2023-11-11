@@ -1,9 +1,9 @@
 import { Injectable, inject } from '@angular/core';
-import { User } from '../interface/user';
+import { User } from '@pages/users/interface/user';
 import { HttpClient } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable, catchError, map, throwError } from 'rxjs';
-import { environment } from 'environments/environment.development';
+import { environment } from '@env/environment.development';
 
 const base_url = environment.base_url;
 

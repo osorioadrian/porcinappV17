@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { environment } from 'environments/environment.development';
-import { Race } from '../interface/race';
+import { environment } from '@env/environment.development';
+import { Race } from '@pages/races/interface/race';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Observable, catchError, map, throwError } from 'rxjs';
+import { Observable, map } from 'rxjs';
 
 const base_url = environment.base_url;
 

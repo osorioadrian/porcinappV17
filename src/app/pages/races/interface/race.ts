@@ -1,4 +1,4 @@
-import { Specie } from 'app/pages/species/interface/specie';
+import { Specie } from '@pages/species/interface/specie';
 
 export interface Race {
   name: string;

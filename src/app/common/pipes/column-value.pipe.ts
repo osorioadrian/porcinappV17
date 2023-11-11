@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { TableColumn } from 'app/shared/table/interface/table';
+import { TableColumn } from '@shared/table/interface/table';
 
 @Pipe({
   name: 'columnValue',

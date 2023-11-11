@@ -13,9 +13,9 @@ import { MatDialogModule, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { MyErrorStateMatcher } from 'app/common/helpers/errorStateMatcher';
-import { Metric } from '../interface/metric';
-import { MetricsService } from '../service/metrics.service';
+import { MyErrorStateMatcher } from '@common/helpers/errorStateMatcher';
+import { Metric } from '@pages/metrics/interface/metric';
+import { MetricsService } from '@pages/metrics/service/metrics.service';
 
 @Component({
   selector: 'app-admin-metric',
