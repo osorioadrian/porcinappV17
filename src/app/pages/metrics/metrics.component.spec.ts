@@ -2,11 +2,10 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import MetricsComponent from './metrics.component';
 import { MetricsService } from './service/metrics.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { of } from 'rxjs';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthService } from '@auth/service/auth.service';
 import { MatDialogModule } from '@angular/material/dialog';
-import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { MatTableModule } from '@angular/material/table';
 import { TableComponent } from '@shared/table/table.component';
 import { DeleteModalComponent } from '@shared/delete-modal/delete-modal.component';
 import { AdminMetricComponent } from './admin/admin-metric.component';
@@ -19,7 +18,7 @@ describe('MetricsComponent', () => {
     await TestBed.configureTestingModule({
       imports: [
         HttpClientTestingModule,
-        BrowserAnimationsModule,
+        NoopAnimationsModule,
         MatDialogModule,
         MatTableModule,
         TableComponent,
@@ -28,16 +27,12 @@ describe('MetricsComponent', () => {
         MetricsComponent
       ],
       providers: [
+        MetricsService,
         {
-          provide: MetricsService,
-          useValue: {
-            getMetrics: () => of([]),
-            updateStatusMetric: () => of({})
-          }
-        },
-        { provide: AuthService, useValue: { user: { roles: [] } } }
-      ],
-      declarations: []
+          provide: AuthService,
+          useValue: { user: { roles: ['ADMINISTRADOR'] } }
+        }
+      ]
     }).compileComponents();
 
     fixture = TestBed.createComponent(MetricsComponent);

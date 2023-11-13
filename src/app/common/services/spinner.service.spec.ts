@@ -15,7 +15,6 @@ describe('SpinnerService', () => {
   });
 
   it('should emit true when showSpinner is called', () => {
-    // Usa jest.spyOn en lugar de spyOn
     const nextSpy = jest.spyOn(service['loading'], 'next');
 
     service.showSpinner();
@@ -24,7 +23,6 @@ describe('SpinnerService', () => {
   });
 
   it('should emit false when hideSpinner is called', () => {
-    // Usa jest.spyOn en lugar de spyOn
     const nextSpy = jest.spyOn(service['loading'], 'next');
 
     service.hideSpinner();

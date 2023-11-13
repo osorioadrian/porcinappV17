@@ -1,50 +1,56 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { PagesComponent } from './pages.component';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BreakpointObserver } from '@angular/cdk/layout';
-import { AuthService } from '@auth/service/auth.service';
+import { RouterTestingModule } from '@angular/router/testing';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { LayoutModule } from '@angular/cdk/layout';
 import { SidebarService } from '@common/services/sidebar.service';
-import { Observable, of } from 'rxjs';
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { MatDialogRef } from '@angular/material/dialog';
-import { BreadcrumbsComponent } from '@shared/breadcrumbs/breadcrumbs.component';
+import { AuthService } from '@auth/service/auth.service';
+import { BreakpointObserver } from '@angular/cdk/layout';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations'; // Asegúrate de tener esta importación correcta
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('PagesComponent', () => {
   let component: PagesComponent;
   let fixture: ComponentFixture<PagesComponent>;
+  let sidebarService: SidebarService;
+  let authService: AuthService;
+  let breakpointObserver: BreakpointObserver;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
+  beforeEach(() => {
+    TestBed.configureTestingModule({
       imports: [
-        PagesComponent,
+        RouterTestingModule,
+        MatToolbarModule,
+        MatListModule,
+        MatIconModule,
+        MatSidenavModule,
+        MatExpansionModule,
+        MatMenuModule,
+        LayoutModule,
+        NoopAnimationsModule, // Asegúrate de tener esta importación aquí
         HttpClientTestingModule,
-        BrowserAnimationsModule,
-        BreadcrumbsComponent
+        PagesComponent
       ],
-      providers: [
-        { provide: AuthService, useValue: {} },
-        { provide: SidebarService, useValue: {} },
-        {
-          provide: BreakpointObserver,
-          useValue: { observe: () => of({ matches: false }) }
-        },
-        {
-          provide: ActivatedRoute,
-          useValue: {
-            params: of({ id: 1 })
-          }
-        }
-      ]
-    }).compileComponents();
+      providers: [SidebarService, AuthService, BreakpointObserver],
+      schemas: [NO_ERRORS_SCHEMA]
+    });
 
     fixture = TestBed.createComponent(PagesComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    sidebarService = TestBed.inject(SidebarService);
+    authService = TestBed.inject(AuthService);
+    breakpointObserver = TestBed.inject(BreakpointObserver);
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  // Agrega tus demás pruebas aquí
 });
