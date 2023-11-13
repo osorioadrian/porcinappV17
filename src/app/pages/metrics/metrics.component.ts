@@ -6,12 +6,12 @@ import {
 } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { TableColumn } from '@shared/table/interface/table';
-import { AdminMetricComponent } from '@pages/metrics/admin/admin-metric.component';
 import { Metric } from '@pages/metrics/interface/metric';
 import { MetricsService } from '@pages/metrics/service/metrics.service';
 import { TableComponent } from '@shared/table/table.component';
 import { switchMap } from 'rxjs';
 import { DeleteModalComponent } from '@shared/delete-modal/delete-modal.component';
+import { AdminMetricComponent } from '@pages/metrics/admin/admin-metric.component';
 
 @Component({
   selector: 'app-metrics',

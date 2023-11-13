@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { environment } from 'environments/environment.development';
+import { environment } from '@environments/environment.development';
 import { Race } from '@pages/races/interface/race';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable, map } from 'rxjs';

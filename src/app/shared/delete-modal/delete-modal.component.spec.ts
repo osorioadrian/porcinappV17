@@ -9,9 +9,8 @@ describe('DeleteModalComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [DeleteModalComponent]
-    })
-    .compileComponents();
-    
+    }).compileComponents();
+
     fixture = TestBed.createComponent(DeleteModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

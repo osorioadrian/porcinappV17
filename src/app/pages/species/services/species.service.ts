@@ -3,7 +3,7 @@ import { Injectable, inject } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable, map } from 'rxjs';
 import { Specie } from '../interface/specie';
-import { environment } from 'environments/environment.development';
+import { environment } from '@environments/environment.development';
 
 const base_url = environment.base_url;
 

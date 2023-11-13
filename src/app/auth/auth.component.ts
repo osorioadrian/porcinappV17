@@ -1,5 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { MyErrorStateMatcher } from '@common/helpers/errorStateMatcher';
 import {
   ReactiveFormsModule,
@@ -29,7 +29,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     ReactiveFormsModule,
     MatInputModule,
     MatButtonModule,
-    RouterModule
+    RouterModule,
+    NgOptimizedImage
   ],
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.scss']

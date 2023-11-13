@@ -1,6 +1,17 @@
 import { Injectable, inject } from '@angular/core';
 import { AuthService } from '@auth/service/auth.service';
 
+interface Menu {
+  titulo: string;
+  submenu: Submenu[];
+}
+
+interface Submenu {
+  titulo: string;
+  url: string;
+  icon: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })

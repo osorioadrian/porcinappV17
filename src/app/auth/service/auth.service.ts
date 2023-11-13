@@ -1,11 +1,22 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Auth } from '@auth/interface/auth';
-import { environment } from 'environments/environment.development';
+import { environment } from '@environments/environment.development';
 import { Observable, catchError, map, throwError } from 'rxjs';
 import { Router } from '@angular/router';
 
 const base_url = environment.base_url;
+
+interface Menu {
+  titulo: string;
+  submenu: Submenu[];
+}
+
+interface Submenu {
+  titulo: string;
+  url: string;
+  icon: string;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +24,7 @@ const base_url = environment.base_url;
 export class AuthService {
   user!: Auth;
   token!: string;
-  menu: [] = [];
+  menu: Menu[] = [];
 
   router = inject(Router);
   http = inject(HttpClient);

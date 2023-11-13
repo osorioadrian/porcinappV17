@@ -11,8 +11,8 @@ export const verifyTokenGuard: CanActivateFn = () => {
   if (expired) {
     console.log('expired if');
 
-    return false;
     autService.logout();
+    return false;
   }
 
   return verifyRenew(payload.exp);
